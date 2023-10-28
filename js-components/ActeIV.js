@@ -1,16 +1,39 @@
-const body = document.querySelector('body')
-const randomWord = document.querySelector('#randomWord')
-let word = 'random'
+const spanWords = document.querySelectorAll(".spanWords");
+const horrorWords = [
+	"Terror",
+	"Scream",
+	"Chainsaw",
+	"Darkness",
+	"Monster",
+	"Demonic",
+	"Gore",
+	"Cursed",
+	"Eerie",
+	"Phantom",
+];
+const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ";
+let word = null;
 
+//* function to match letter when key pressed
 const matchWord = (event) => {
-  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ'
-  if (event.key === word.charAt(0)) {
-    console.log(event.key)
-    word = word.slice(1)
-    console.log(word)
-    randomWord.innerHTML = word
-  }
-}
+	if (event.key === word.charAt(0)) {
+		// Removes the first letter
+		word = word.slice(1);
+		spanWords.innerHTML = word;
+    // When spanWords empty, fetch new word
+		if (spanWords.innerHTML === "") {
+			randomWord();
+		}
+	}
+};
 
-randomWord.innerHTML = word
-body.addEventListener('keyup', matchWord)
+//* function to choose a random word in array horrorWords
+const randomWord = (element) => { 
+  let chosenWord = Math.floor(Math.random() * horrorWords.length);
+	word = horrorWords[chosenWord];
+	element.innerHTML = word;
+};
+
+spanWords.forEach(word => randomWord(word));
+
+document.body.onkeydown = matchWord;

@@ -1,4 +1,5 @@
 const labyEl = document.getElementById('labyrinthe');
+const gameOver = document.getElementById('game_over');
 
 const height = 28;
 const width = 15;
@@ -52,11 +53,27 @@ for (let i = 0; i < height; i++) {
   for (let j = 0; j < width; j++) {
     const cellEl = document.createElement('div');
     if (labyMap[i][j] === 0) {
-      cellEl.classList.add('wall');
+        cellEl.classList.add('wall');
     }
-    cellEl.classList.add('cell');
+    else {
+        cellEl.classList.add('cell');
+    }
     cellEl.setAttribute('data-x', j);
     cellEl.setAttribute('data-y', i);
     labyEl.appendChild(cellEl);
   }
 }
+
+const walls = document.querySelectorAll('.wall');
+
+function game(walls) {
+    walls.forEach(wall => {
+        wall.addEventListener('mouseover', function() {
+            console.log('game over');
+            gameOver.style.display = 'block'; 
+    });
+    
+    });
+}
+
+game(walls);

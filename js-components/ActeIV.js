@@ -25,7 +25,8 @@ const createNewWord = (section) => {
 	const containerWord = document.createElement("div");
 	const spanWord = document.createElement("span");
 	const sprite = document.createElement("img");
-
+	sprite.src = "../img/bone.png";
+	sprite.alt = "bone";
 	// Class attributed to container + span and bone as children of container and then container in section
 	containerWord.classList.add("container-word");
 	containerWord.appendChild(spanWord);
@@ -35,6 +36,14 @@ const createNewWord = (section) => {
 	// Choose random word to add in span
 	const randomWord = Math.floor(Math.random() * horrorWords.length);
 	spanWord.textContent = horrorWords[randomWord];
+
+	// Random position to center of screen
+	const sectionWidth = document.body.clientWidth;
+	const sectionHeight = document.body.clientHeight;
+	const startWidth = Math.round(Math.random() * sectionWidth) + "px";
+	const startHeight = Math.round(Math.random() * sectionHeight) + "px";
+	document.documentElement.style.setProperty("--start-Width", startWidth);
+	document.documentElement.style.setProperty("--start-Height", startHeight);
 };
 
 //* Creates new section for new words
@@ -44,9 +53,9 @@ const loopNewWord = () => {
 };
 
 // Initiate first word
-loopNewWord();
+// loopNewWord();
 
-//* Listens if a key is pressed and matches the current first letter of newly created word
+//* Listens if a key is pressed and matches the current first letter of each word
 document.body.addEventListener("keydown", (event) => {
 	sections = Array.from(sectionHTMLCollection);
 	const pressedKey = event.key;
@@ -68,3 +77,56 @@ document.body.addEventListener("keydown", (event) => {
 		}
 	});
 });
+
+
+const dialogues = [
+    "...",
+    "I sense there's something in the wind",
+    "That feels like tragedy's at hand",
+    "And though I'd like to stand by him",
+    "Can't shake this... Oh !",
+    "Well, hello you... What are you doing around here ?",
+    "A pretty little thing like you shouldn't be lurking around in a graveyard.",
+    "I mean...",
+    "With such a handsome face",
+    "And lovely arms",
+    "And pleasing legs",
+    "Oh...",
+    "They would look so beautiful on me",
+    "G I V E  T H E M  T O  M E"
+]
+
+let dialogue_index = 0;
+
+const button = document.querySelector('.dialogues_bg');
+let dialogue = document.querySelector('.dialogues_text');
+const name = document.querySelector('name');
+const picture = document.getElementById('pp_Jack');
+
+let timeOuts = [];
+let skip = false;
+
+function clear(){
+    for (let j = 0; j < timeOuts.length; j++){
+        clearTimeout(timeOuts[j])
+    }
+}
+
+button.addEventListener('click', function() {
+    dialogue.innerHTML = '';
+    skip == true ? skip = false : skip = true
+    console.log(skip)
+    if (dialogue_index < dialogues.length) {
+        if (skip == false){
+            for (let i = 0; i < dialogues[dialogue_index].length; i++){
+                function timeOut () {dialogue.innerHTML += dialogues[dialogue_index].charAt(i)}
+                timeOuts.push(setTimeout(timeOut, 50 * i))
+            }
+        }
+        else {
+            dialogue.innerHTML = dialogues[dialogue_index];
+            dialogue_index++;
+            clear()
+        }
+    }
+})

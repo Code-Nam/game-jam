@@ -1,11 +1,6 @@
 let game_over = false;
 let music = document.getElementById('Sally_singing');
 
-// if(music.paused) {
-//     music.play();
-//     console.log('1');
-// }
-
 // while (game_over = false) {
 
 // }
@@ -27,30 +22,63 @@ const dialogues = [
     "G I V E  T H E M  T O  M E"
 ]
 
+let dialogue_index = 0;
+
 const button = document.getElementById('dialogues_bg');
 let dialogue = document.getElementById('dialogues_text');
 const name = document.getElementById('name');
 const picture = document.getElementById('pp_Sally');
 
-console.log(dialogue.length);
-button.addEventListener('click', function() {
-    dialogue_index++;
-    console.log(dialogue_index);
+let timeOuts = [];
+let skip = false;
 
-    if (dialogue_index >= dialogues.length) { //not working
-        for (let index = 0; index < 5; index++) {
-            button.style.transition = 'all 1s';
-            picture.style.transition = 'all 1s';
-            name.style.transition = 'all 1s';
-            button.style.opacity = '0';
-            picture.style.opacity = '0';
-            name.style.display = 'none';
-        }
+function clear(){
+    for (let j = 0; j < timeOuts.length; j++){
+        clearTimeout(timeOuts[j])
     }
-    else {
-        dialogue.innerHTML = repliques[replique_index-1];
+}
+
+button.addEventListener('click', function() {
+    dialogue.innerHTML = '';
+    skip == true ? skip = false : skip = true
+    console.log(skip)
+    if (dialogue_index < dialogues.length) {
+        if (skip == false){
+            for (let i = 0; i < dialogues[dialogue_index].length; i++){
+                function timeOut () {dialogue.innerHTML += dialogues[dialogue_index].charAt(i)}
+                timeOuts.push(setTimeout(timeOut, 50 * i))
+            }
+            if(music.paused && dialogue_index == 1) {
+                music.play();
+            }
+        }
+        else {
+            dialogue.innerHTML = dialogues[dialogue_index];
+            dialogue_index++;
+            clear()
+        }
+    } else {
+        console.log('2');
     }
 });
+
+//     if (dialogue_index >= dialogues.length) {
+//         for (let index = 0; index < 5; index++) {
+//             button.style.transition = 'all 1s';
+//             picture.style.transition = 'all 1s';
+//             name.style.transition = 'all 1s';
+//             button.style.opacity = '0';
+//             picture.style.opacity = '0';
+//             name.style.display = 'none';
+//         }
+//     }
+//     else {
+//         dialogue.innerHTML = dialogues[dialogue_index-1];
+//         if(music.paused && dialogue_index == 1) {
+//             music.play();
+//         }
+//     }
+// });
 
 if (game_over) {
     document.body.style.backgroundImage="url('assets/game_over.gif')";

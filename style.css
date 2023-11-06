@@ -16,7 +16,7 @@ body {
     overflow: hidden;
 }
 
-.dialogues_bg {
+#dialogues_bg {
     position: absolute;
     background-color: black;
     width: 80%;
@@ -27,7 +27,7 @@ body {
     opacity: 93%;
 }
 
-.dialogues_bg img {
+#dialogues_bg img {
     height: 200px;
     width: auto;
     border-top-left-radius: 10px;

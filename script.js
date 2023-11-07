@@ -1,9 +1,59 @@
 let game_over = false;
 let music = document.getElementById('Sally_singing');
 
-// while (game_over = false) {
 
-// }
+let hoverTimeout;
+function setHoverTimeout() {
+  hoverTimeout = setTimeout(() => {
+     game_over = true;
+     console.log(game_over)
+  }, 1000);
+}
+function clearHoverTimeout() {
+    clearTimeout(hoverTimeout);
+}
+
+const circles = [
+    document.getElementById('circle1'),
+    document.getElementById('circle2'),
+    document.getElementById('circle3')
+];
+
+const zones_visions = [
+    document.getElementById('zone_vision1'),
+    document.getElementById('zone_vision2'),
+    document.getElementById('zone_vision3')
+]
+
+function vision(){
+
+    circles.forEach(circle => {
+        circle.style.visibility ='visible';
+        let div_square = Math.random()*900
+        circle.style.width =  div_square + "px";
+        circle.style.height = div_square + "px";
+        circle.style.top = Math.random() *400 + "px";
+        circle.style.left = Math.random() *700 + "px";
+    })
+
+    zones_visions.forEach(zone_vision => {
+        zone_vision.style.transition = 'all 4.9s'
+        let transformedZone = Math.random() * 200;
+        zone_vision.style.width = transformedZone + "%";
+        zone_vision.style.height = transformedZone + "%";
+        zone_vision.addEventListener('transitionend', () =>{
+            zone_vision.style.transition = 'all 0s';
+            zone_vision.style.width = "0%";
+            zone_vision.style.height = "0%";
+        } )
+    })
+
+    zones_visions.forEach(zone_vision => {
+        zone_vision.addEventListener('mouseenter', setHoverTimeout);
+        zone_vision.addEventListener('mouseleave', clearHoverTimeout);
+    })
+}
+
 
 const dialogues = [
     "...",
@@ -32,6 +82,8 @@ const picture = document.getElementById('pp_Sally');
 let timeOuts = [];
 let skip = false;
 
+let count = 0;
+
 function clear(){
     for (let j = 0; j < timeOuts.length; j++){
         clearTimeout(timeOuts[j])
@@ -41,7 +93,6 @@ function clear(){
 button.addEventListener('click', function() {
     dialogue.innerHTML = '';
     skip == true ? skip = false : skip = true
-    console.log(skip)
     if (dialogue_index < dialogues.length) {
         if (skip == false){
             for (let i = 0; i < dialogues[dialogue_index].length; i++){
@@ -58,28 +109,44 @@ button.addEventListener('click', function() {
             clear()
         }
     } else {
-        console.log('2');
+
+        // while (game_over != true && count < 10) {
+        //     document.body.style.backgroundImage = 'none';
+        //     document.body.style.backgroundColor = 'black';
+        //     document.getElementById('dialogues_bg').style.visibility = 'hidden'
+        //     vision()
+        //     count++
+        //     setTimeout(vision, 5000 * count);
+        //     console.log('a');
+        // }
+
+        for(i=0 ; i< 10; i++) {
+            if (game_over == false) {
+                document.body.style.backgroundImage = 'none';
+                document.body.style.backgroundColor = 'black';
+                document.getElementById('dialogues_bg').style.visibility = 'hidden'
+                vision()
+                // count++
+                setTimeout(vision, 5000 * count);
+                console.log('a')
+            } else {
+                // if (game_over) {
+                    document.body.style.backgroundImage="url('assets/game_over.gif')";
+                // }
+            }
+        }
+
+        console.log('10');
+        
+        if (count >= 10) {
+            document.body.style.backgroundImage="url('assets/bg-graveyard.jpg')";
+            document.getElementById('dialogues_bg').style.visibility = 'visible';
+        }
     }
 });
 
-//     if (dialogue_index >= dialogues.length) {
-//         for (let index = 0; index < 5; index++) {
-//             button.style.transition = 'all 1s';
-//             picture.style.transition = 'all 1s';
-//             name.style.transition = 'all 1s';
-//             button.style.opacity = '0';
-//             picture.style.opacity = '0';
-//             name.style.display = 'none';
-//         }
-//     }
-//     else {
-//         dialogue.innerHTML = dialogues[dialogue_index-1];
-//         if(music.paused && dialogue_index == 1) {
-//             music.play();
-//         }
-//     }
-// });
-
-if (game_over) {
-    document.body.style.backgroundImage="url('assets/game_over.gif')";
-}
+const dialogue2 = [
+    '...',
+    'Where did that little brat go now',
+    'Show yourse-... AAAAAAAAAAAAAAAH'
+]

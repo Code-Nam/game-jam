@@ -110,33 +110,34 @@ button.addEventListener('click', function() {
         }
     } else {
 
-        // while (game_over != true && count < 10) {
-        //     document.body.style.backgroundImage = 'none';
-        //     document.body.style.backgroundColor = 'black';
-        //     document.getElementById('dialogues_bg').style.visibility = 'hidden'
-        //     vision()
-        //     count++
-        //     setTimeout(vision, 5000 * count);
-        //     console.log('a');
-        // }
-
-        for(i=0 ; i< 10; i++) {
-            if (game_over == false) {
-                document.body.style.backgroundImage = 'none';
-                document.body.style.backgroundColor = 'black';
-                document.getElementById('dialogues_bg').style.visibility = 'hidden'
-                vision()
-                // count++
-                setTimeout(vision, 5000 * count);
-                console.log('a')
-            } else {
-                // if (game_over) {
-                    document.body.style.backgroundImage="url('assets/game_over.gif')";
-                // }
-            }
+        while (game_over != true && count < 10) {
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = 'black';
+            document.getElementById('dialogues_bg').style.visibility = 'hidden'
+            vision()
+            count++
+            setTimeout(vision, 5000 * count);
+            console.log('a');
         }
 
+        // for(i=0 ; i< 10; i++) {
+        //     if (game_over == false) {
+        //         document.body.style.backgroundImage = 'none';
+        //         document.body.style.backgroundColor = 'black';
+        //         document.getElementById('dialogues_bg').style.visibility = 'hidden'
+        //         vision()
+        //         setTimeout(vision, 5000 * count);
+        //         console.log('a')
+        //     } else {
+        //         document.body.style.backgroundImage="url('assets/game_over.gif')";
+        //     }
+        // }
+
         console.log('10');
+
+        if (game_over) {
+            document.body.style.backgroundImage="url('assets/game_over.gif')";
+        }
         
         if (count >= 10) {
             document.body.style.backgroundImage="url('assets/bg-graveyard.jpg')";

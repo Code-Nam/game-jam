@@ -31,7 +31,7 @@ body{
 
 #labyrinthe{
     position: absolute;
-    top: -375%;
+    top: -400%;
     margin: 1rem;
     display: grid;
     grid-template-columns: repeat(var(--width), 1fr);
@@ -45,7 +45,9 @@ body{
 }
 
 .wall{
-    background-color: grey;
+    background-image: url("assets/cafards.png");
+    background-size: cover;
+    border-radius: 10px;
     width: 6.7vw;
     height: 6.7vw;
 }

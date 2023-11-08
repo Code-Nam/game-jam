@@ -1,0 +1,28 @@
+body{
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+}
+
+.labyrinthe{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(19, 1fr);
+}
+
+.vertical_wall{
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.horizontal_wall{
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}

@@ -157,6 +157,6 @@ window_pic.addEventListener('click', function() {
     soundtrack.pause();
     vitre_noise.play();
     vitre_noise.volume = 0.2;
-    window.open('google.com', '_blank');
+    window.open(location.href = '/Sally_index.html', '_blank');
     window_pic.style.display = 'none';
 });

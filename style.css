@@ -1,0 +1,129 @@
+*  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#game_over{
+    display: none;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    transition: all 0.5s linear;
+}
+
+#game_over img{
+    width: 100%;
+    height: auto;
+}
+
+#labyrinthe{
+    position: absolute;
+    top: -400%;
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(var(--width), 1fr);
+    grid-template-rows: repeat(var(--height), 1fr);
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wall{
+    background-image: url("assets/cafards.png");
+    background-size: cover;
+    border-radius: 10px;
+    width: 6.7vw;
+    height: 6.7vw;
+}
+
+
+
+#oogie_boogie{
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 30%;
+    z-index: 2;
+}
+
+#oogie_boogie img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+#dialogue{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: 90%;
+    height: 40%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3vw;
+    color: white;
+}
+
+
+#name{
+    font-size: 2vw;
+    background-color: orange;
+    padding: 1%;
+    text-align: center;
+    border-radius: 20px;
+    position : absolute;
+    z-index: 3;
+    left: 10%;
+}
+
+
+
+#window{
+    position: absolute;
+    width: 25%;
+    transition: all 0.5s linear;
+    z-index: 4;
+    display: none;
+    animation: fadeIn 1s linear;
+}
+
+#window img{
+    width: 100%;
+    height: auto;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }  

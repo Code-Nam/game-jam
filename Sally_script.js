@@ -194,7 +194,7 @@ button.addEventListener("click", function () {
                             clear2();
                         }
                     } else {
-						window.open('google.com', '_blank');
+						window.open(location.href = 'pages/ActeIV.html', '_blank');
 					}
                 })
                 

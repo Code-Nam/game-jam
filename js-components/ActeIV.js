@@ -1,8 +1,11 @@
 const dialogues = [
-    'Bon...',
-	'Heu.....',
-	'On a pas eu le temps..',
-	'Donc...'
+    '...',
+	'Ahahah...',
+	"Je ne pensais pas que tu arriverais jusqu'ici...",
+	'Félicitation !',
+	'...',
+	"Malheureusement, ton chemin s'arrête ici",
+	"A bientôt dans la tombe !"
 ]
 
 let dialogue_index = 0;

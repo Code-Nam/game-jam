@@ -1,129 +1,102 @@
-*  {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 body{
-    background-image: url("assets/background.jpg");
+    background-image: url(https://wallpapercave.com/wp/wp4993816.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
+    animation: moveGif 5s infinite;
+}
 
-    height: 100vh;
-    display: flex;
+header{ 
+
+    display:flex ;
+    justify-content: space-around;
+    color: rgb(173, 83, 14);
+    width: 800px; height: 150px;
+
+}
+
+#conteneur{
+
+width: 100vw;
+/* si tu veux être plus à l'aise, utilise les % ou les vw ( viewport width ) ou vh ( viewport height )  */
+}
+
+
+.gauche{
+    display : flex;
+    justify-content : space-between;
+    background-color: rgba(151, 200, 159, 0.1);
+    opacity: 20%;
+    color: rgb(173, 83, 14);
+    width: 150px; 
+    height: 530px; 
+    float: left;
+    gap: 20px;
+    flex-direction : column;
+}
+
+.gauche, p{
+    opacity: 1;
+    font-size: 25px;
+}
+
+
+.milieu{
+    color: rgb(173, 83, 14);
+    width: 650px; 
+    height: 530px; 
+    float: left;
+}
+
+.clear{
+    clear: both;
+}
+
+
+
+.tableau{
+
+    display:flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    align-items: center;    
+    color: rgb(255, 254, 253);
+    border: 3px 3px white;
+
 }
 
-#game_over{
-    display: none;
-    z-index: 1;
-    width: 100%;
-    height: auto;
-    transition: all 0.5s linear;
-}
 
-#game_over img{
-    width: 100%;
-    height: auto;
-}
-
-#labyrinthe{
+.crane {
+    /* background-image: url(https://www.stylepochoir.fr/medias/images/cr21-crane-tete-de-mort-pochoir-vue-de-cote-style-pochoir.jpg); */
     position: absolute;
-    top: -400%;
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(var(--width), 1fr);
-    grid-template-rows: repeat(var(--height), 1fr);
+    animation: moveGif 5s infinite;
 }
 
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wall{
-    background-image: url("assets/cafards.png");
-    background-size: cover;
-    border-radius: 10px;
-    width: 6.7vw;
-    height: 6.7vw;
-}
-
-
-
-#oogie_boogie{
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-    width: 30%;
-    z-index: 2;
-}
-
-#oogie_boogie img{
-    width: 100%;
-    height: auto;
-}
-
-
-
-#dialogue{
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-    width: 90%;
-    height: 40%;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 3vw;
-    color: white;
-}
-
-
-#name{
-    font-size: 2vw;
-    background-color: orange;
-    padding: 1%;
-    text-align: center;
-    border-radius: 20px;
-    position : absolute;
-    z-index: 3;
-    left: 10%;
-}
-
-
-
-#window{
-    position: absolute;
-    width: 25%;
-    transition: all 0.5s linear;
-    z-index: 4;
-    display: none;
-    animation: fadeIn 1s linear;
-}
-
-#window img{
-    width: 100%;
-    height: auto;
-}
-
-@keyframes fadeIn {
-    from {
-      opacity: 0;
+@keyframes moveGif {
+    0% {
+        left: 0;
+        top: 0;
     }
-  
-    to {
-      opacity: 1;
+    25% {
+        left: 50%;
+        top: 0;
     }
-  }  
+    50% {
+        left: 50%;
+        top: 50%;
+    }
+    75% {
+        left: 0;
+        top: 50%;
+    }
+    100% {
+        left: 0;
+        top: 0;
+    }
+}
+
+
+/* .border, tr{
+    border: 2px 1px 1px white;
+} */
+
+
+

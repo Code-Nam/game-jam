@@ -46,7 +46,7 @@ section {
 	width: 100px;
 	height: 100px;
 	object-fit: contain;
-	/* animation: rotate 1s infinite linear; */
+	animation: rotate 1s infinite linear;
 }
 
 @keyframes rotate {
